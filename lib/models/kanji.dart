@@ -46,4 +46,21 @@ class Kanji extends Equatable {
         meaning,
         compactMeaning
       ];
+
+  static Kanji fromMap(Map map) {
+    return Kanji(
+        map["kanji"],
+        map["radical"],
+        map["type"],
+        map["reg_on"],
+        map["reg_kun"],
+        map["onyomi"],
+        map["kunyomi"],
+        map["nanori"],
+        map["strokes"],
+        map["grade"],
+        map["jlpt"],
+        map["meaning"],
+        map["compact_meaning"]);
+  }
 }

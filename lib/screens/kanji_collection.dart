@@ -61,6 +61,18 @@ class _KanjiCollectionState extends State<KanjiCollection> {
       appBar: AppBar(
         title: Text('${widget.tableName}'),
         actions: [
+          IconButton(icon: Icon(Icons.apps), onPressed: (){
+
+            List<Map> charList = [];
+            charList.addAll(result);
+            charList.shuffle();
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => KanjiSingularList(charList, 0, isQuiz: true,)),
+            );
+          }),
           IconButton(
             onPressed: () {
 //              Navigator.push(

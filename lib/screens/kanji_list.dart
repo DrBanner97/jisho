@@ -42,6 +42,20 @@ class _KanjiListState extends State<KanjiList> {
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.jlptLevel} ${results?.length}'),
+        actions: [
+          IconButton(icon: Icon(Icons.apps), onPressed: (){
+            
+            List<Map> charList = [];
+            charList.addAll(results);
+            charList.shuffle();
+            
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => KanjiSingularList(charList, 0, isQuiz: true,)),
+            );
+          })
+        ],
       ),
       body: _isLoading
           ? Center(
@@ -55,7 +69,7 @@ class _KanjiListState extends State<KanjiList> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => KanjiSingularList(results, pos)),
+                          builder: (context) => KanjiSingularList(results, pos,)),
                     );
                   },
                   child: Container(
